@@ -14,6 +14,34 @@ import login_background_image from '../assets/images/login_background_image.png'
 import logo from '../assets/images/logo.png';
 
 export default class LoginScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: '',
+      password: '',
+    };
+  }
+
+  handleUsernameChange = changedText => {
+    this.setState({username: changedText});
+  };
+
+  handlePasswordChange = changedText => {
+    this.setState({password: changedText});
+  };
+
+  handleChangeText = stateKey => changedText => {
+    this.setState({[stateKey]: changedText});
+  };
+
+  handleLogin = () => {
+    const {username, password} = this.state;
+
+    console.log('Username: ', username);
+    console.log('Password: ', password);
+  };
+
   handleSignUp = () => {
     console.log('SignUp button pressed');
   };
@@ -34,6 +62,8 @@ export default class LoginScreen extends Component {
               style={styles.inputField}
               placeholder="Username"
               placeholderTextColor="gray"
+              value={this.state.username}
+              onChangeText={this.handleChangeText('username')}
             />
 
             <TextInput
@@ -41,9 +71,15 @@ export default class LoginScreen extends Component {
               placeholder="Password"
               placeholderTextColor="gray"
               secureTextEntry
+              value={this.state.password}
+              onChangeText={this.handleChangeText('password')}
+              // maxLength={4}
+              // keyboardType="number-pad"
             />
 
-            <TouchableOpacity style={styles.loginButton}>
+            <TouchableOpacity
+              onPress={this.handleLogin}
+              style={styles.loginButton}>
               <Text style={styles.loginButtonTitle}>LOGIN</Text>
             </TouchableOpacity>
 
