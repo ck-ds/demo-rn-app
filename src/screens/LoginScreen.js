@@ -2,12 +2,17 @@ import React, {Component} from 'react';
 import {
   Text,
   View,
-  ImageBackground,
   StyleSheet,
   Image,
   TextInput,
+  ImageBackground,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 // Images
 import login_background_image from '../assets/images/login_background_image.png';
@@ -23,12 +28,12 @@ export default class LoginScreen extends Component {
     };
   }
 
-  handleUsernameChange = changedText => {
-    this.setState({username: changedText});
+  handleUsernameChange = username => {
+    this.setState({username});
   };
 
-  handlePasswordChange = changedText => {
-    this.setState({password: changedText});
+  handlePasswordChange = password => {
+    this.setState({password});
   };
 
   handleChangeText = stateKey => changedText => {
@@ -54,45 +59,100 @@ export default class LoginScreen extends Component {
         style={styles.backgroundImageContainer}>
         <Text style={styles.title}>Login</Text>
 
-        <View style={styles.contentContainer}>
-          <Image source={logo} resizeMode="cover" style={styles.logo} />
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={styles.scrollContainer}
+          // contentContainerStyle={styles.scrollContentContainer}
+        >
+          <View style={styles.contentContainer}>
+            <Image source={logo} resizeMode="cover" style={styles.logo} />
 
-          <View style={styles.formContainer}>
-            <TextInput
-              style={styles.inputField}
-              placeholder="Username"
-              placeholderTextColor="gray"
-              value={this.state.username}
-              onChangeText={this.handleChangeText('username')}
-            />
+            <View style={styles.formContainer}>
+              <TextInput
+                style={styles.inputField}
+                placeholder="Username"
+                placeholderTextColor="gray"
+                value={this.state.username}
+                onChangeText={this.handleChangeText('username')}
+              />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Username"
+                placeholderTextColor="gray"
+                value={this.state.username}
+                onChangeText={this.handleChangeText('username')}
+              />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Username"
+                placeholderTextColor="gray"
+                value={this.state.username}
+                onChangeText={this.handleChangeText('username')}
+              />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Username"
+                placeholderTextColor="gray"
+                value={this.state.username}
+                onChangeText={this.handleChangeText('username')}
+              />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Username"
+                placeholderTextColor="gray"
+                value={this.state.username}
+                onChangeText={this.handleChangeText('username')}
+              />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Username"
+                placeholderTextColor="gray"
+                value={this.state.username}
+                onChangeText={this.handleChangeText('username')}
+              />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Username"
+                placeholderTextColor="gray"
+                value={this.state.username}
+                onChangeText={this.handleChangeText('username')}
+              />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Username"
+                placeholderTextColor="gray"
+                value={this.state.username}
+                onChangeText={this.handleChangeText('username')}
+              />
 
-            <TextInput
-              style={styles.inputField}
-              placeholder="Password"
-              placeholderTextColor="gray"
-              secureTextEntry
-              value={this.state.password}
-              onChangeText={this.handleChangeText('password')}
-              // maxLength={4}
-              // keyboardType="number-pad"
-            />
+              <TextInput
+                style={styles.inputField}
+                placeholder="Password"
+                placeholderTextColor="gray"
+                secureTextEntry
+                value={this.state.password}
+                onChangeText={this.handleChangeText('password')}
+                // maxLength={4}
+                // keyboardType="number-pad"
+              />
 
-            <TouchableOpacity
-              onPress={this.handleLogin}
-              style={styles.loginButton}>
-              <Text style={styles.loginButtonTitle}>LOGIN</Text>
-            </TouchableOpacity>
+              <TouchableOpacity
+                onPress={this.handleLogin}
+                style={styles.loginButton}>
+                <Text style={styles.loginButtonTitle}>LOGIN</Text>
+              </TouchableOpacity>
 
-            <View style={styles.signUpTextContainer}>
-              <Text style={styles.signUpText}>Don't have an account? </Text>
-              <Text
-                style={[styles.signUpText, styles.signUpTitle]}
-                onPress={this.handleSignUp}>
-                Sign Up
-              </Text>
+              <View style={styles.signUpTextContainer}>
+                <Text style={styles.signUpText}>Don't have an account? </Text>
+                <Text
+                  style={[styles.signUpText, styles.signUpTitle]}
+                  onPress={this.handleSignUp}>
+                  Sign Up
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
+        </ScrollView>
       </ImageBackground>
     );
   }
@@ -109,6 +169,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginRight: 20,
   },
+  scrollContainer: {
+    flex: 1,
+    marginTop: 30,
+    marginBottom: 20,
+  },
+  // scrollContentContainer: {
+  //   justifyContent: 'center',
+  // },
   contentContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -117,7 +185,6 @@ const styles = StyleSheet.create({
     width: 220,
     height: 64,
     alignSelf: 'center',
-    marginTop: -120,
   },
   formContainer: {
     marginTop: 70,
@@ -134,7 +201,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   loginButton: {
-    height: 40,
+    height: hp(5.5),
     backgroundColor: '#ea4f6f',
     borderRadius: 20,
     justifyContent: 'center',
@@ -143,7 +210,7 @@ const styles = StyleSheet.create({
   },
   loginButtonTitle: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: wp(4),
     fontWeight: '500',
     textAlign: 'center',
   },

@@ -3,6 +3,7 @@ import {Text, View, StyleSheet} from 'react-native';
 
 // Screens
 // import MyFirstScreen from './src/screens/MyFirstScreen';
+// import StateDemo from './src/screens/StateDemo';
 import LoginScreen from './src/screens/LoginScreen';
 
 export default class App extends Component {
