@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, FlatList, Image} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  ActivityIndicator,
+} from 'react-native';
+import {Bubbles} from 'react-native-loader';
 
 // Components
 import UserListItemComponent from '../components/UserListItemComponent';
@@ -15,14 +22,17 @@ export default class UserListScreen extends Component {
       isLoading: true,
       users: null,
       status: null,
+      isRefreshing: false,
     };
   }
 
   componentDidMount() {
-    setTimeout(() => {
+    const task = () => {
       const {results} = users;
-      this.setState({isLoading: false, users: results, status: null});
-    }, 3000);
+      this.setState({users: results, status: null, isLoading: false});
+    };
+
+    setTimeout(task, 3000);
   }
 
   renderItem = ({item}) => <UserListItemComponent item={item} />;
@@ -31,13 +41,26 @@ export default class UserListScreen extends Component {
 
   itemSeparator = () => <View style={styles.separator} />;
 
+  handleUserListRefresh = () => {
+    this.setState({isRefreshing: true});
+
+    const task = () => {
+      const {results} = users;
+      this.setState({users: results, status: null, isRefreshing: false});
+    };
+
+    setTimeout(task, 2000);
+  };
+
   render() {
-    const {isLoading, users, status} = this.state;
+    const {isLoading, users, status, isRefreshing} = this.state;
 
     if (isLoading) {
       return (
         <View style={styles.messageContainer}>
-          <Text style={styles.message}>Fetching users...</Text>
+          {/* <Text style={styles.message}>Fetching users...</Text> */}
+          {/* <ActivityIndicator size="large" color="#0000ff" /> */}
+          <Bubbles size={10} color="blue" />
         </View>
       );
     }
@@ -51,6 +74,8 @@ export default class UserListScreen extends Component {
           ItemSeparatorComponent={this.itemSeparator}
           contentContainerStyle={styles.listContentContainer}
           showsVerticalScrollIndicator={false}
+          refreshing={isRefreshing}
+          onRefresh={this.handleUserListRefresh}
         />
       </View>
     );
