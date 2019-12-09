@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import 'react-native-gesture-handler';
+import {createAppContainer} from 'react-navigation';
 
 // Screens
 import MyFirstScreen from './src/screens/MyFirstScreen';
@@ -8,13 +10,15 @@ import LoginScreen from './src/screens/LoginScreen';
 import UserListScreen from './src/screens/UserListScreen';
 import PropsStateComponentDemo from './src/screens/PropsStateComponentDemo';
 
+// Root Navigator
+import {createRootNavigator} from './src/routes/Routes';
+
 export default class App extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <PropsStateComponentDemo />
-      </View>
-    );
+    const RootNavigator = createRootNavigator(false);
+    const AppContainer = createAppContainer(RootNavigator);
+
+    return <AppContainer />;
   }
 }
 

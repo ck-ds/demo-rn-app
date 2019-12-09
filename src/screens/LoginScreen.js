@@ -48,7 +48,7 @@ export default class LoginScreen extends Component {
   };
 
   handleSignUp = () => {
-    console.log('SignUp button pressed');
+    this.props.navigation.push('SignUp');
   };
 
   render() {
