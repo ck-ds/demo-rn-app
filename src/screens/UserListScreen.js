@@ -12,7 +12,7 @@ import {Bubbles} from 'react-native-loader';
 import UserListItemComponent from '../components/UserListItemComponent';
 
 // Data
-import {users} from '../api/Users';
+import {users} from '../data/Users';
 
 export default class UserListScreen extends Component {
   constructor(props) {
