@@ -36,6 +36,9 @@ const HomeNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      header: null,
+    },
   },
 );
 

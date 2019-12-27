@@ -18,11 +18,19 @@ import {
 import login_background_image from '../assets/images/login_background_image.png';
 import logo from '../assets/images/logo.png';
 
+// Components
+import PopupDemoComponent from '../components/PopupDemoComponent';
+
 export default class LoginScreen extends Component {
+  // static navigationOptions = {
+  //   header: null,
+  // };
+
   constructor(props) {
     super(props);
 
     this.state = {
+      showDemoPopup: false,
       username: '',
       password: '',
     };
@@ -41,23 +49,32 @@ export default class LoginScreen extends Component {
   };
 
   handleLogin = () => {
-    const {username, password} = this.state;
-
-    console.log('Username: ', username);
-    console.log('Password: ', password);
+    this.props.navigation.navigate('LoggedIn');
   };
 
   handleSignUp = () => {
     this.props.navigation.push('SignUp');
   };
 
+  handleDemoPopup = () => {
+    this.setState({showDemoPopup: true});
+  };
+
+  closePopup = () => {
+    this.setState({showDemoPopup: false});
+  };
+
   render() {
+    const {showDemoPopup} = this.state;
+
     return (
       <ImageBackground
         source={login_background_image}
         resizeMode="cover"
         style={styles.backgroundImageContainer}>
-        <Text style={styles.title}>Login</Text>
+        <Text onPress={this.handleDemoPopup} style={styles.title}>
+          Login
+        </Text>
 
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -68,55 +85,6 @@ export default class LoginScreen extends Component {
             <Image source={logo} resizeMode="cover" style={styles.logo} />
 
             <View style={styles.formContainer}>
-              <TextInput
-                style={styles.inputField}
-                placeholder="Username"
-                placeholderTextColor="gray"
-                value={this.state.username}
-                onChangeText={this.handleChangeText('username')}
-              />
-              <TextInput
-                style={styles.inputField}
-                placeholder="Username"
-                placeholderTextColor="gray"
-                value={this.state.username}
-                onChangeText={this.handleChangeText('username')}
-              />
-              <TextInput
-                style={styles.inputField}
-                placeholder="Username"
-                placeholderTextColor="gray"
-                value={this.state.username}
-                onChangeText={this.handleChangeText('username')}
-              />
-              <TextInput
-                style={styles.inputField}
-                placeholder="Username"
-                placeholderTextColor="gray"
-                value={this.state.username}
-                onChangeText={this.handleChangeText('username')}
-              />
-              <TextInput
-                style={styles.inputField}
-                placeholder="Username"
-                placeholderTextColor="gray"
-                value={this.state.username}
-                onChangeText={this.handleChangeText('username')}
-              />
-              <TextInput
-                style={styles.inputField}
-                placeholder="Username"
-                placeholderTextColor="gray"
-                value={this.state.username}
-                onChangeText={this.handleChangeText('username')}
-              />
-              <TextInput
-                style={styles.inputField}
-                placeholder="Username"
-                placeholderTextColor="gray"
-                value={this.state.username}
-                onChangeText={this.handleChangeText('username')}
-              />
               <TextInput
                 style={styles.inputField}
                 placeholder="Username"
@@ -153,6 +121,8 @@ export default class LoginScreen extends Component {
             </View>
           </View>
         </ScrollView>
+
+        {showDemoPopup && <PopupDemoComponent closePopup={this.closePopup} />}
       </ImageBackground>
     );
   }
