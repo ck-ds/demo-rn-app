@@ -1,4 +1,4 @@
-package com.demoapp;
+package com.doomshell.demoapp;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

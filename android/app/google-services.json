@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "312826340691",
+    "firebase_url": "https://fir-app-76602.firebaseio.com",
+    "project_id": "fir-app-76602",
+    "storage_bucket": "fir-app-76602.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312826340691:android:fcf0b37daf984e78b16da6",
+        "android_client_info": {
+          "package_name": "com.doomshell.demoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "312826340691-hrs94hh1ij6karf3mab5c9u5fietvhj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaUIYrpES_e-6MB1MV-_NZi4dbZUi4RWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "312826340691-hrs94hh1ij6karf3mab5c9u5fietvhj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
